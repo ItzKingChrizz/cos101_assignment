@@ -1,0 +1,108 @@
+def newtons_second_law(mass, acceleration):
+    """
+    Calculates the force using Newton's Second Law: F = m * a
+    :param mass: Mass of the object in kilograms (kg)
+    :param acceleration: Acceleration in meters per second squared (m/s^2)
+    :return: Force in Newtons (N)
+    """
+    force = mass * acceleration
+    return force
+
+
+def final_velocity(v_i, a, t):
+    """
+    Calculates the final velocity using the kinematic equation: v_f = v_i + a * t
+    :param v_i: Initial velocity in meters per second (m/s)
+    :param a: Acceleration in meters per second squared (m/s^2)
+    :param t: Time in seconds (s)
+    :return: Final velocity in meters per second (m/s)
+    """
+    v_f = v_i + a * t
+    return v_f
+
+
+def gravitational_potential_energy(mass, height, g=9.81):
+    """
+    Calculates the gravitational potential energy: E_p = m * g * h
+    :param mass: Mass of the object in kilograms (kg)
+    :param height: Height in meters (m)
+    :param g: Gravitational acceleration (m/s^2), default to 9.81 m/s^2
+    :return: Gravitational potential energy in Joules (J)
+    """
+    E_p = mass * g * height
+    return E_p
+
+
+def ohms_law(current, resistance):
+    """
+    Calculates the voltage using Ohm's Law: V = I * R
+    :param current: Current in amperes (A)
+    :param resistance: Resistance in ohms (Ω)
+    :return: Voltage in volts (V)
+    """
+    voltage = current * resistance
+    return voltage
+
+
+def coulombs_law(q1, q2, r, k_e=8.99e9):
+    """
+    Calculates the force between two charges using Coulomb's Law: F = k_e * |q1 * q2| / r^2
+    :param q1: Charge 1 in coulombs (C)
+    :param q2: Charge 2 in coulombs (C)
+    :param r: Distance between the charges in meters (m)
+    :param k_e: Coulomb's constant, default is 8.99e9 N·m²/C²
+    :return: Force between the charges in Newtons (N)
+    """
+    force = k_e * abs(q1 * q2) / r**2
+    return force
+
+
+# Main function to interact with the user
+def main():
+    print("Welcome to the Physics Calculator!")
+    print("Please choose one of the following equations:")
+    print("1. Newton's Second Law (F = m * a)")
+    print("2. Kinematic Equation (v_f = v_i + a * t)")
+    print("3. Gravitational Potential Energy (E_p = m * g * h)")
+    print("4. Ohm's Law (V = I * R)")
+    print("5. Coulomb's Law (F = k * |q1 * q2| / r^2)")
+
+    choice = input("Enter the number corresponding to the equation: ")
+
+    if choice == '1':  # Newton's Second Law
+        mass = float(input("Enter mass (kg): "))
+        acceleration = float(input("Enter acceleration (m/s^2): "))
+        force = newtons_second_law(mass, acceleration)
+        print(f"Force (F) = {force} N")
+
+    elif choice == '2':  # Kinematic Equation
+        v_i = float(input("Enter initial velocity (m/s): "))
+        acceleration = float(input("Enter acceleration (m/s^2): "))
+        time = float(input("Enter time (s): "))
+        v_f = final_velocity(v_i, acceleration, time)
+        print(f"Final velocity (v_f) = {v_f} m/s")
+
+    elif choice == '3':  # Gravitational Potential Energy
+        mass = float(input("Enter mass (kg): "))
+        height = float(input("Enter height (m): "))
+        energy = gravitational_potential_energy(mass, height)
+        print(f"Gravitational Potential Energy (E_p) = {energy} J")
+
+    elif choice == '4':  # Ohm's Law
+        current = float(input("Enter current (A): "))
+        resistance = float(input("Enter resistance (Ω): "))
+        voltage = ohms_law(current, resistance)
+        print(f"Voltage (V) = {voltage} V")
+
+    elif choice == '5':  # Coulomb's Law
+        q1 = float(input("Enter charge 1 (C): "))
+        q2 = float(input("Enter charge 2 (C): "))
+        r = float(input("Enter distance between the charges (m): "))
+        force = coulombs_law(q1, q2, r)
+        print(f"Force (F) between the charges = {force} N")
+
+    else:
+        print("Invalid choice. Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    main()
